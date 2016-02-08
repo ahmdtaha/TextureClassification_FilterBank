@@ -6,16 +6,20 @@ rootpath = '/Users/ahmedtaha/Documents/MATLAB/Datasets/curetcol/sample'
 patch_width = -1;patch_height = -1;
 training_Dataset = [];
 
-no_classes = 3;
-no_training_classes = 2;
+no_classes = 3; %% Should be 61. This is the number of classes you are going to used during the modeling and classification phase
+no_training_classes = 2; %% Should be 20. This is the number of classes you are going to used during the texton dictionary phase
 training_classes = [1,4,6,10,12,14,16,18,20,22,25,27,30,33,35,41,45,48,50,59];
-total_images_per_class = 92;
-training_per_class = 46;
-test_per_class = total_images_per_class-training_per_class;
 
-RFS = makeRFSfilters;
-filter_bank = RFS;
-training_options = 'MR8';
+total_images_per_class = 92; %% Total number of images per texture class
+training_per_class = 46; %% Number of images used per texture to build histogram models
+test_per_class = total_images_per_class-training_per_class; %% Number of images used per texture to be classified
+
+%% Specify the filter to be used.
+%filter_bank  = makeLMfilters; %%  to use LM Filter bank
+%filter_bank  = makeSfilters; %%  to use S Filter bank
+
+filter_bank = makeRFSfilters; %%  to use RFS Filter bank
+training_options = 'MR8'; %% To indicate that you are going to extract the MR-8 from RFS repos.
 classification_options = 'MR8';
 
 numOfFilters = size(filter_bank,3);
@@ -33,17 +37,12 @@ NUM_BINS = numClustersPerClass * no_classes;
 total_images = cell(total_images_per_class,no_training_classes);
 
 
-%classes = [2,3,5,7,8,9,15,17,19,21,24,36,37,39,43,44,47,52,54,58];         
 for c=1:no_training_classes
     i = training_classes(c); 
     folderPath = [rootpath sprintf('%02d',i) '/'];
     filenames = [fuf(folderPath ,'detail')]; 
     total_images(1:total_images_per_class,c) = filenames(1:total_images_per_class ,:);
-    %training_images(1:training_per_class ,c) = filenames(1:training_per_class ,:);
-    %test_images(1:test_per_class,c) = filenames(training_per_class+1:total_images_per_class,:);
-    
-    %training_images(1:training_per_class ,c) = filenames(1:2:total_images_per_class ,:);
-    %test_images(1:test_per_class,c) = filenames(2:2:total_images_per_class,:);
+
 end
 
 
@@ -75,7 +74,7 @@ for c=1:no_classes
     filenames = [fuf(folderPath ,'detail')]; 
     total_images(1:total_images_per_class,c) = filenames(1:total_images_per_class ,:);
     
-    %% Taking all images
+    %% Taking images by order
     %training_images(1:training_per_class ,c) = filenames(1:training_per_class ,:);
     %test_images(1:test_per_class,c) = filenames(training_per_class+1:total_images_per_class,:);
     

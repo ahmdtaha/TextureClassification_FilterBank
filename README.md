@@ -13,7 +13,7 @@ Setup
 
  1. Download the code.
  2. Download the [Classification toolbox for MATLAB, by Milano Chemometrics and QSAR Research Group](http://michem.disat.unimib.it/chm/download/softwares/help_classification/web.htm). 
- 3. Update the knn_calc_dist.m file with the file inside this repos, to support chi-square distance
+ 3. Update the knn_calc_dist.m in the Classification toolbox with the file inside this repos, to support chi-square distance
  4. Update the "rootpath" variable in demo_curet.m to point to Columbia-Utrecht dataset folder on your machine.
  5. Run demo_curet.m to test the performance over Columbia-Utrecht dataset.
 
