@@ -1,5 +1,6 @@
 function [test_histogram,test_classes, accuracy ] = classify_images( params )
-
+%% classify_images will classify a particular set of images to a pre-defined classes using training models
+% 
 
 patch_width = params.patch_width;
 patch_height = params.patch_height;

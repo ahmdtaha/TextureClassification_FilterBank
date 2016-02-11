@@ -1,5 +1,11 @@
 function [ im ] = get_image( image_path ,patch_width,patch_height,options)
-
+%% get_image , will load the image from image_path
+%           - patch_width,patch_height can be used to crop certain part of an
+%           image. 
+%           If you want to load the whole image, set these values to -1
+%           
+%           - options can be used to pass extra parameters, like applying a
+%           particular transformation to the image after being loaded
 
 im = imread(image_path);
 
