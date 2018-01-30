@@ -33,3 +33,6 @@ Contributor list
 ----------------
 1. [Ahmed Taha](http://ahmed-taha.com/)
 2. [Aleksandrs Ecins](http://www.umiacs.umd.edu/~aecins/)
+
+## License
+TextureClassification_FilterBank is released under the BSD 2-Clause license. The code is released for unrestricted use.
