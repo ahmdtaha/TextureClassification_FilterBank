@@ -1,4 +1,4 @@
-function [ histogram   ] = filter_respone2histogram( filter_response,training_class_centroid,NUM_BINS)
+function [ histogram   ] = filter_response2histogram( filter_response,training_class_centroid,NUM_BINS)
     image_size = size(filter_response,1);
     
     texton_map = zeros(image_size ,1);
