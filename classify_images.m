@@ -28,7 +28,7 @@ for i=1:no_classes
     for j=1:test_per_class 
         image_name = test_images{j,i};
         filter_response = im2filter_response( image_name,patch_width,patch_height,filter_bank,classification_options);
-        histogram= filter_respone2histogram( filter_response,training_class_centroid,NUM_BINS);
+        histogram= filter_response2histogram( filter_response,training_class_centroid,NUM_BINS);
     
         test_histogram(test_index,:) = histogram;
         test_classes(test_index,:) = i;

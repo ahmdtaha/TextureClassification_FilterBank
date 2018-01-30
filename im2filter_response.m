@@ -10,12 +10,15 @@ for k=1:size(filter,3)
 end;
 if strfind(options, 'MR8')
     filter_response_MR8 = zeros(size(training_im,1)*size(training_im,2),8);
-    filter_response_MR8(:,1) = max(filter_response(:,1:6),[],2);
-    filter_response_MR8(:,2) = max(filter_response(:,7:12),[],2);
-    filter_response_MR8(:,3) = max(filter_response(:,13:18),[],2);
-    filter_response_MR8(:,4) = max(filter_response(:,19:24),[],2);
-    filter_response_MR8(:,5) = max(filter_response(:,25:30),[],2);
-    filter_response_MR8(:,6) = max(filter_response(:,31:36),[],2);
+    
+    % pick the *absolute* maximum response
+    filter_response_MR8(:,1) = max(abs(filter_response(:,1:6)),[],2);
+    filter_response_MR8(:,2) = max(abs(filter_response(:,7:12)),[],2);
+    filter_response_MR8(:,3) = max(abs(filter_response(:,13:18)),[],2);
+    filter_response_MR8(:,4) = max(abs(filter_response(:,19:24)),[],2);
+    filter_response_MR8(:,5) = max(abs(filter_response(:,25:30)),[],2);
+    filter_response_MR8(:,6) = max(abs(filter_response(:,31:36)),[],2);
+    
     filter_response_MR8(:,7:8) = filter_response(:,37:38);
     filter_response = filter_response_MR8;
 end

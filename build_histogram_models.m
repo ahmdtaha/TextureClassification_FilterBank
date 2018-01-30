@@ -20,7 +20,7 @@ for i=1:no_classes
         image_name = training_images{j,i};
         
         filter_response = im2filter_response( image_name,patch_width,patch_height,filter_bank,training_options);
-        histogram= filter_respone2histogram( filter_response,training_class_centroid,NUM_BINS);
+        histogram= filter_response2histogram( filter_response,training_class_centroid,NUM_BINS);
         
         index = j+ (i-1)*training_per_class;
         training_histogram(index,:) = histogram;
